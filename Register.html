@@ -15,6 +15,7 @@
 
     <!----自己编写的JavaScript---------------------------------------------->
     <script src="Function.js"></script>
+    <script src="password.js"></script>
     <!--------------------------------------------------------------------->
 
     <style>
@@ -28,6 +29,14 @@
             text-align: center;
             background-color: white !important;
             font-size:20px;
+        }
+        form
+        {
+            text-align: left !important;
+        }
+        input.text
+        {
+            width: 200px;
         }
     </style>
 </head>
@@ -84,26 +93,35 @@
         </div>
     </div>
 </nav>
-</head>
-<body>
 <!------------注册表单的内容-------------->
 <div class="jumbotron">
     <div class="container">
-        <form class="form-horizontal" name="Must" role="form" action="tem.txt" onsubmit="return JudgeLegal()" method="get">
-            <div class="form-group">
-                *学号&nbsp<input name="MustA" type="text" class="form-control" placeholder="请输入名字" width="30px">
-            </div>
-            <br/>
-            *邮箱&nbsp<input name="MustB" type="text" class="form-control">
-            <br/>
-            *密码&nbsp<span id="box"><input name="MustC" type="password" class="form-control"></span>
-            <span id="click"><a href="javascript:showps()">显示密码</a></span>
-            <br/>
-            *学院&nbsp<input name="MustD" type="text" class="form-control">
-            <br/>
-            <input type="submit" value="提交">
-        </form>
+    <div class="row">
+        <div class="col-md-3">
+        </div>
+        <div class="col-md-6">
+            <form name="Must" role="form" action="tem.txt" onsubmit="return JudgeLegal()" method="POST">
+                *学号&nbsp
+                <input name="MustA" class="text" type="text" placeholder="请输入名字" width="30px">
+                <br/>
+                *邮箱&nbsp
+                <input name="MustB" class="text" type="text" placeholder="请输入邮箱">
+                <br/>
+                *密码&nbsp
+                <span id=box><input class="text" type="password" name="MustC" size="80" placeholder="请输入密码"></span>
+                <span id=click><a href="javascript:showps()">显示密码</a></span>
+                <br/>
+                *学院&nbsp
+                <input name="MustD" class="text" type="text" placeholder="请输入学院">
+                <br/>
+                <input style="width: 50px;text-align: center" class="text" align="center" type="submit" value="提交">
+            </form>
+        </div>
+        <div class="col-md-3">
+        </div>
+    </div>
     </div>
 </div>
+<!------------------------------------------------------------->
 </body>
 </html>
