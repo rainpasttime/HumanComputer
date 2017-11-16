@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>Register</title>
+    <title>Upload</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
@@ -19,6 +20,7 @@
     <script src="UploadImage.js"></script>
     <!--------------------------------------------------------------------->
 
+    <title>校园内二手书交易网站</title>
     <style>
         a
         {
@@ -27,17 +29,11 @@
         body
         {
             padding: 100px;
-            text-align: center;
-            background-color: white !important;
-            font-size:20px;
         }
-        form
+        textarea
         {
-            text-align: left !important;
-        }
-        input.text
-        {
-            width: 200px;
+            width: 750px;
+            height: 200px;
         }
     </style>
 </head>
@@ -101,35 +97,26 @@
         </div>
     </div>
 </nav>
-<!------------注册表单的内容-------------->
-<div class="jumbotron">
-    <div class="container">
+<!--------------------------------主页内容-------------------------------------------------------------->
+<div class="container-fluid">
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-2">
         </div>
-        <div class="col-md-6">
-            <form name="Must" role="form" action="tem.txt" onsubmit="return JudgeLegal()" method="POST">
-                *学号&nbsp
-                <input name="MustA" class="text" type="text" placeholder="请输入名字" width="30px">
-                <br/>
-                *邮箱&nbsp
-                <input name="MustB" class="text" type="text" placeholder="请输入邮箱">
-                <br/>
-                *密码&nbsp
-                <span id=box><input class="text" type="password" name="MustC" size="80" placeholder="请输入密码"></span>
-                <span id=click><a href="javascript:showps()">显示密码</a></span>
-                <br/>
-                *学院&nbsp
-                <input name="MustD" class="text" type="text" placeholder="请输入学院">
-                <br/>
-                <input style="width: 50px" class="text" type="submit" value="提交">
-            </form>
+        <div class="col-md-8">
+            输入书本描述（含书名，编著者，版本，新旧程度）
+            <label>
+                <textarea required autofocus></textarea>
+            </label>
+                <span class="glyphicon glyphicon-paperclip"></span> 上传图片
+            <input type="file" id="idFile" name="idFile" width="150px" onchange="javascript:setImagePreview(this,localImag,preview);" />
+                    预 览:
+            <div id="localImag">
+                <img id="preview" alt="预览图片" src="../img/userphoto.jpg" style="width: 250px; height: 250px;" />
+            </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-2">
         </div>
-    </div>
     </div>
 </div>
-<!------------------------------------------------------------->
 </body>
 </html>

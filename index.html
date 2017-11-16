@@ -14,6 +14,8 @@
 
     <!----自己编写的JavaScript---------------------------------------------->
     <script src="Function.js"></script>
+    <script src="password.js"></script>
+    <script src="UploadImage.js"></script>
     <!--------------------------------------------------------------------->
 
     <title>校园内二手书交易网站</title>
@@ -24,7 +26,7 @@
 	    }
 	    body
 	    {
-	    	padding: 50px;
+	    	padding: 100px;
 	    }
     </style>
 </head>
@@ -37,15 +39,14 @@
     </div>
     <div>
         <ul class="nav navbar-nav">
-            <li><a href="#">搜索</a></li>
-            <li><a href="#">上传</a></li>
+            <li><a href="UploadImagePage.html">上传</a></li>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     工科
                     <span class="caret"></span>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">计算机学院</a>
+                    <li><a href="ComputerScience.html">计算机学院</a>
                     </li>
                 </ul>
             </li>
@@ -79,6 +80,14 @@
 	      <li><a href="Login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
 	    </ul>
     </div>
+        <div>
+            <form class="navbar-form navbar-left" role="search">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </form>
+        </div>
     </div>
     </nav>
 <!-----------主页内容------------------->
