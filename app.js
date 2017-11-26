@@ -43,7 +43,6 @@ function insert(name,psw,majorTem,emailTem){
 
 /*注册页面数据接收*/
 app.post('/register', function (req, res,next) {
-    console.log("index in Register!");
     //处理跨域的问题
     res.setHeader('Content-type','application/json;charset=utf-8')
     res.header("Access-Control-Allow-Origin", "*");
@@ -96,7 +95,6 @@ app.post('/register', function (req, res,next) {
 
 /*登录处理*/
 app.post('/login', function (req, res,next) {
-    console.log("index in Login");
     //先查询有没有这个user
     var UserName = req.body.username;
     var UserPsw = req.body.password;
