@@ -11,11 +11,16 @@
     <!-- 引用了JQuery  -->
     <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--  引用的JQury的validate文件,Form文件,validate.extend文件  -->
-    <script src="/jquery/jQuery.Form.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/jquery/jquery.validate.js" charset="UTF-8"></script>
-    <script type="text/javascript" src="/jquery/jquery.validate.extend.js" charset="UTF-8"></script>
-    <!----->
+    <!--  引用的JQury的validate插件  -->
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <!---------------------------------------------------------------------------------------------------------------------->
+
+    <!--== 自己编写的JavaScript ===========================================-->
+    <!--script src="Function.js"></script>
+    <script src="password.js"></script>
+    <script src="UploadImage.js"></script>
+    <!======================================================================-->
 
     <style>
         a
@@ -132,7 +137,7 @@
                     <div class="col-md-2">
                     </div>
                     <div class="col-md-6">
-                        <button type="button" class="btn btn-default" id="login_submit">注册</button>
+                        <button class="btn btn-default" id="login_submit">注册</button>
                     </div>
                     <div class="col-md-4">
                     </div>
@@ -149,72 +154,71 @@
 <script>
     $(document).ready(function(){
         $("#signupForm").validate({
-            rules: {
-                username: {
-                    required: true,
-                    minlength: 2
+                rules: {
+                    username: {
+                        required: true,
+                        minlength: 2
+                    },
+                    password: {
+                        required: true,
+                        minlength: 5
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    major: {
+                        required: true
+                    },
+                    agree: "required"
                 },
-                password: {
-                    required: true,
-                    minlength: 5
+                messages: {
+                    username: {
+                        required: "请输入用户名",
+                        minlength: "用户名必需由最少两个字母组成"
+                    },
+                    password: {
+                        required: "请输入密码",
+                        minlength: "密码长度不能小于 5 个字母"
+                    },
+                    email: {
+                        required: "请输入邮箱",
+                        email: "请输入正确的邮箱"
+                    },
+                    major: {
+                        required: "请输入学院"
+                    }
                 },
-                email:{
-                    required:true,
-                    email:true
-                },
-                major:{
-                    required:true
-                },
-                agree:"required"
-            },
-            messages: {
-                username: {
-                    required: "请输入用户名",
-                    minlength: "用户名必需由最少两个字母组成"
-                },
-                password: {
-                    required: "请输入密码",
-                    minlength: "密码长度不能小于 5 个字母"
-                },
-                email:{
-                    required:"请输入邮箱",
-                    email:"请输入正确的邮箱"
-                },
-                major: {
-                    required: "请输入学院",
-                }
-            }
-        });
+            //当验证通过之后需要把表单中的信息存放进数据库里面
+            submitHandler:function () {
+                    var usernameGet = $('#username').val();
+                    var passwordGet = $('#password').val();
+                    var emailGet = $('#email').val();
+                    var majorGet = $('#major').val();
 
-        $("#login_submit").click(function(){
-            var usernameGet=$('#username').val();
-            var passwordGet=$('#password').val();
-            var emailGet=$('#email').val();
-            var majorGet=$('#major').val();
-
-            //发送ajax请求 使用post方式发送json字符串给后台login
-            $.ajax({
-                type: "post",
-                url: "http://localhost:1993/register",
-                dataType: "json",
-                data:{ username: usernameGet, password: passwordGet, email:emailGet, major:majorGet },
-                success: function(data){
-                    //接受返回的数据，前端判断采取的动作
-                    console.log(data);
-                    if(data){
-                        if(data.message===false)
-                        {
-                            console.log("data message");
-                            console.log(typeof data.message);
-                            alert('账号已存在');
-                            window.location.href="#";
-                        }else{
-                            alert('注册成功');
-                            window.location.href="http://localhost:1993";
+                    //发送ajax请求 使用post方式发送json字符串给后台login
+                    $.ajax({
+                        type: "post",
+                        url: "http://localhost:1993/register",
+                        dataType: "json",
+                        data: {username: usernameGet, password: passwordGet, email: emailGet, major: majorGet},
+                        success: function (data) {
+                            //接受返回的数据，前端判断采取的动作
+                            console.log(data);
+                            if (data) {
+                                if (data.message === false) {
+                                    console.log("data message");
+                                    console.log(typeof data.message);
+                                    alert('账号已存在');
+                                    window.location.href = "#";
+                            }else {
+                                   alert('注册成功');
+                                   window.location.href = "http://localhost:1993";
+                            }
                         }
                     }
-                }
-            });
+                });
+            }
         });
     });
 </script>
