@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>ComputerScience</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <!-- 引用了JQuery  -->
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--  引用的JQury的validate插件  -->
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
+    <!---------------------------------------------------------------------------------------------------------------------->
+
+    <!--自己编写的JavaScript-->
+    <script src="../JS/UploadImage.js"></script>
+    <!--==================-->
+
+    <style>
+        a
+        {
+            font-size: large;
+        }
+        body
+        {
+            padding:100px;
+            text-align: center;
+            background-color: white !important;
+            font-size:20px;
+        }
+        form
+        {
+            text-align: left !important;
+        }
+        input.text
+        {
+            width: 200px;
+        }
+        img
+        {
+            width: 180px;
+            height: 200px;
+        }
+        div.image
+        {
+            margin-top: 50px;
+            margin-bottom: 20px;
+        }
+        button
+        {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+<!-- ======= 导航栏 ========-->
+<nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html" target="_blank">二手书</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a href="uploadImagePage.html">上传</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        工科
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="computerScience.html">计算机学院</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        文科
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">文学院</a></li>
+                        <li><a href="#">马克思学院</a></li>
+                        <li><a href="#">法学院</a></li>
+                        <li><a href="#">社会学院</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                        理科
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">化学学院</a></li>
+                        <li><a href="#">数学学院</a></li>
+                        <li><a href="#">经济与工商管理学院</a></li>
+                        <li><a href="#">教育信息技术学院</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+            </ul>
+        </div>
+        <div>
+            <form class="navbar-form navbar-left" role="search">
+                <input type="text" class="form-control" placeholder="Search">
+                <button type="button" class="btn btn-default btn-sm">
+                    <span class="glyphicon glyphicon-search"></span> Search
+                </button>
+            </form>
+        </div>
+    </div>
+</nav>
+<!--===== 内容页 ========-->
+<div class="container-fluid" id="loadPicture">
+    <div class="row image" id="1">
+        <div class="col-md-3" id="10COL">
+        </div>
+        <div class="col-md-3" id="11COL">
+        </div>
+        <div class="col-md-3" id="12COL">
+        </div>
+        <div class="col-md-3" id="13COL">
+        </div>
+    </div>
+    <div class="row image" id="2">
+        <div class="col-md-3" id="20COL">
+        </div>
+        <div class="col-md-3" id="21COL">
+        </div>
+        <div class="col-md-3" id="22COL">
+        </div>
+        <div class="col-md-3" id="23COL">
+        </div>
+    </div>
+    <div class="row image" id="3">
+        <div class="col-md-3" id="30COL">
+        </div>
+        <div class="col-md-3" id="31COL">
+        </div>
+        <div class="col-md-3" id="32COL">
+        </div>
+        <div class="col-md-3" id="33COL">
+        </div>
+    </div>
+    <div class="row image" id="4">
+        <div class="col-md-3" id="40COL">
+        </div>
+        <div class="col-md-3" id="41COL">
+        </div>
+        <div class="col-md-3" id="42COL">
+        </div>
+        <div class="col-md-3" id="43COL">
+        </div>
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(document).ready(function() {
+        //发送ajax请求 使用post方式发送json字符串给后台
+        $.ajax({
+            type: "post",
+            url: "http://localhost:1993/computerScience",
+            dataType: "json",
+            data: {type:"image"},
+            success: function (data) {
+                    //接受返回的数据，前端判断采取的动作
+                var i = 0;
+                while(i<data.length){
+                    var rowi;
+                    var t;
+                    var pathOne;
+                    var j;
+                    var id;
+                    if (i+3<data.length) {
+
+                        rowi = (Math.floor(i/4)+1).toString();
+
+                        for(t = i;t<i+4;t++)
+                        {
+                            pathOne = data[t].imagePath;
+                            j = t%4;
+                            id = rowi+j.toString()+"COL";
+
+                            document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
+
+                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                        }
+                        i=t;
+                    }
+                    else if(i+2<length){
+                        rowi = (Math.floor(i/4)+1).toString();
+                        for(t = i;t<i+3;t++)
+                        {
+                            pathOne = data[t].imagePath;
+                            j = t%4;
+                            id = rowi+j.toString()+"COL";
+
+                            document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
+
+                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                        }
+                        i=t;
+                    }
+                    else if(i+1<length){
+                        rowi = (Math.floor(i/4)+1).toString();
+                        for(t = i;t<i+2;t++)
+                        {
+                            pathOne = data[t].imagePath;
+                            j = t%4;
+                            id = rowi+j.toString()+"COL";
+
+                            document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
+
+                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                        }
+                        i=t;
+                    }
+                    else {
+                        rowi = (Math.floor(i/4)+1).toString();
+                        pathOne = data[i].imagePath;
+                        j = i%4;
+                        id = rowi+j.toString()+"COL";
+
+                        document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
+
+                        document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                        i++;
+                    }
+                }
+            }
+        });
+    });
+</script>

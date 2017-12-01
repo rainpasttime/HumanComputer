@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var userSchema = require('./user');
 var bodyParser = require('body-parser');
+var ImageSchema  = require('./image');
 
 var mongoose = require('mongoose');
 //加密模块
@@ -22,7 +23,7 @@ app.get('/',function(req,res){
 });
 
 
-/*插入数据库函数*/
+/*插入用户到数据库函数*/
 function insert(name,psw,majorTem,emailTem){
     //数据格式
     var user =  new userSchema({
@@ -44,11 +45,11 @@ function insert(name,psw,majorTem,emailTem){
 /*注册页面数据接收*/
 app.post('/register', function (req, res,next) {
     //处理跨域的问题
-    res.setHeader('Content-type','application/json;charset=utf-8')
+    res.setHeader('Content-type','application/json;charset=utf-8');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
+    res.header("X-Powered-By",' 3.2.1');
     //先查询有没有这个user
     var UserName = req.body.username;
     var UserPsw = req.body.password;
@@ -125,6 +126,45 @@ app.post('/login', function (req, res,next) {
             else
             {
                 console.log('请注册账号');
+                res.send({status:'success',message:false});
+            }
+        }
+    })
+});
+
+/* 图片加载*/
+app.post('/computerScience', function (req, res) {
+    var typeGet= req.body.type;
+    console.log("typeGet   "+typeGet);
+    console.log(typeof typeGet);
+    //处理跨域的问题
+    res.setHeader('Content-type','application/json;charset=utf-8')
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+
+    var imagesearch = {type: typeGet};
+    ImageSchema.find(imagesearch, function(err, obj)
+    {
+        if (err) {
+            console.log("Error:" + err);
+        }
+        else
+        {
+            if(obj.length>=1)
+            {
+                //var i = 0;
+                //while(i<obj.length){
+                    console.log("obj");
+                    console.log(obj);
+                    res.send(obj);
+                //}
+
+            }
+            else
+            {
+                console.log("Wrong not find!");
                 res.send({status:'success',message:false});
             }
         }
