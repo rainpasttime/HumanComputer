@@ -12,11 +12,11 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <!---------------------------------------------------------------------------------------------------------------------->
+    <!-- ============== -->
 
-    <!----自己编写的JavaScript---------------------------------------------->
-    <script src="UploadImage.js"></script>
-    <!--------------------------------------------------------------------->
+    <!--== 自己编写的JavaScript ========================================== -->
+    <script src="../JS/UploadImage.js"></script>
+    <!--================================================================ -->
 
     <title>校园内二手书交易网站</title>
     <style>
@@ -32,15 +32,16 @@
         {
             width: 750px;
             height: 200px;
+            resize: none;
         }
     </style>
 </head>
 <body>
-<!-----------导航栏----------------------->
+<!--===== 导航栏 ============ -->
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html" target="_blank">二手书</a>
+            <a class="navbar-brand" href="index.html" target="_blank">首页</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
@@ -95,13 +96,13 @@
         </div>
     </div>
 </nav>
-<!--------------------------------主页内容-------------------------------------------------------------->
+<!--================ 主页内容 ================== -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-md-2">
         </div>
         <div class="col-md-8">
-            输入书本描述（含书名，编著者，版本，新旧程度）
+            输入书本描述（含书名，编著者，版本，新旧程度,目录，价格）
             <label>
                 <textarea required autofocus></textarea>
             </label>

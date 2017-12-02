@@ -15,7 +15,7 @@
     <!--  引用的JQury的validate插件  -->
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-    <!---------------------------------------------------------------------------------------------------------------------->
+    <!-- ==== -->
 
     <!--自己编写的JavaScript-->
     <script src="../JS/UploadImage.js"></script>
@@ -62,7 +62,7 @@
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a class="navbar-brand" href="index.html" target="_blank">二手书</a>
+            <a class="navbar-brand" href="index.html" target="_blank">首页</a>
         </div>
         <div>
             <ul class="nav navbar-nav">
@@ -159,6 +159,15 @@
         <div class="col-md-3" id="43COL">
         </div>
     </div>
+    <ul class="pagination">
+        <li><a href="#">&laquo;</a></li>
+        <li><a href="#">1</a></li>
+        <li><a href="#">2</a></li>
+        <li><a href="#">3</a></li>
+        <li><a href="#">4</a></li>
+        <li><a href="#">5</a></li>
+        <li><a href="#">&raquo;</a></li>
+    </ul>
 </div>
 </body>
 </html>
@@ -191,7 +200,7 @@
 
                             document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
 
-                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"./details.html\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
                         }
                         i=t;
                     }
@@ -205,7 +214,7 @@
 
                             document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
 
-                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"./details.html\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
                         }
                         i=t;
                     }
@@ -219,7 +228,7 @@
 
                             document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
 
-                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                            document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"./details.html\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
                         }
                         i=t;
                     }
@@ -231,7 +240,7 @@
 
                         document.getElementById(id).innerHTML+="<img src=\""+pathOne+"\">&nbsp&nbsp<br/>";
 
-                        document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"#\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
+                        document.getElementById(id).innerHTML+="<button type=\"button\" class=\"btn btn-default btn-xs\"><a href=\"./details.html\"><span class=\"glyphicon glyphicon-tags\"></span>详情</a></button>";
                         i++;
                     }
                 }
