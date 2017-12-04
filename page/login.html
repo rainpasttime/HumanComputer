@@ -54,14 +54,15 @@
         </div>
         <div>
             <ul class="nav navbar-nav">
-                <li><a href="UploadImagePage.html">上传</a></li>
+                <li><a href="uploadImagePage.html">上传</a></li>
+                <li><a href="#">课外书</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         工科
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="ComputerScience.html">计算机学院</a>
+                        <li><a href="computerScience.html">计算机学院</a>
                         </li>
                     </ul>
                 </li>
@@ -97,8 +98,8 @@
         </div>
         <div>
             <form class="navbar-form navbar-left" role="search">
-                <input type="text" class="form-control" placeholder="Search">
-                <button type="button" class="btn btn-default btn-sm">
+                <input type="text" class="form-control" placeholder="Search" id="searchContention">
+                <button type="button" class="btn btn-default btn-sm" id="searchButton">
                     <span class="glyphicon glyphicon-search"></span> Search
                 </button>
             </form>
@@ -118,7 +119,7 @@
             <div class="col-md-4">
                 <form id="loginForm">
                     <label for="loginusername">帐号</label>
-                    <input class="text" type="text" placeholder="请输入学号" name="loginusername" id="loginusername">
+                    <input class="text" type="text" placeholder="请输入帐号" name="loginusername" id="loginusername">
                     <br/>
                     <br/>
                     <label for="loginpassword">密码</label>
@@ -203,5 +204,10 @@
                 }
             });
         });
-    })
+    });
+    $('#searchButton').on('click', function(e) {
+        var search = document.getElementById("searchContention").value;
+        var url = "search.html?search="+search;
+        window.location.href= url;
+    });
 </script>

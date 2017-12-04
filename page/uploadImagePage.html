@@ -14,7 +14,7 @@
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- ============== -->
 
-    <!--== 自己编写的JavaScript ========================================== -->
+    <!--== JavaScript ========================================== -->
     <script src="../JS/UploadImage.js"></script>
     <!--================================================================ -->
 
@@ -37,7 +37,7 @@
     </style>
 </head>
 <body>
-<!--===== 导航栏 ============ -->
+<!--============= 导航栏===================-->
 <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
     <div class="container-fluid">
         <div class="navbar-header">
@@ -46,6 +46,7 @@
         <div>
             <ul class="nav navbar-nav">
                 <li><a href="uploadImagePage.html">上传</a></li>
+                <li><a href="#">课外书</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         工科
@@ -82,14 +83,14 @@
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
-                <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
+                <li><a href="./register.html"><span class="glyphicon glyphicon-user"></span> 注册</a></li>
+                <li><a href="./login.html"><span class="glyphicon glyphicon-log-in"></span> 登录</a></li>
             </ul>
         </div>
         <div>
             <form class="navbar-form navbar-left" role="search">
-                <input type="text" class="form-control" placeholder="Search">
-                <button type="button" class="btn btn-default btn-sm">
+                <input type="text" class="form-control" placeholder="Search" id="searchContention">
+                <button type="button" class="btn btn-default btn-sm" id="searchButton">
                     <span class="glyphicon glyphicon-search"></span> Search
                 </button>
             </form>
@@ -119,3 +120,10 @@
 </div>
 </body>
 </html>
+<script>
+    $('#searchButton').on('click', function(e) {
+        var search = document.getElementById("searchContention").value;
+        var url = "search.html?search="+search;
+        window.location.href= url;
+    });
+</script>

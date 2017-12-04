@@ -1,26 +1,21 @@
-<!DOCTYPE html>
+<!DOCTYPE HTML>
 <html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>ComputerScience</title>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- 引用了JQuery  -->
-    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--  引用的JQury的validate插件  -->
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-    <!-- ==== -->
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--=================上面是引用的文件============================================================-->
 
-    <!--JavaScript-->
+    <!--=================JavaScript=======================================================-->
     <script src="../JS/UploadImage.js"></script>
-    <!--==================-->
-
+    <!--===========================================================================================-->
+    <title>Search</title>
     <style>
         a
         {
@@ -28,14 +23,11 @@
         }
         body
         {
-            padding:100px;
             text-align: center;
-            background-color: white !important;
             font-size:20px;
-        }
-        form
-        {
-            text-align: left !important;
+            padding: 100px;
+            margin: auto;
+            background-color: white;
         }
         img
         {
@@ -114,8 +106,10 @@
         </div>
     </div>
 </nav>
-<!--===== 内容页 ========-->
+<!-- 具体搜索的内容  -->
 <div class="container-fluid" id="loadPicture">
+    <div class="row image" id="showNotFound">
+    </div>
     <div class="row image" id="1">
         <div class="col-md-3" id="10COL">
         </div>
@@ -156,16 +150,6 @@
         <div class="col-md-3" id="43COL">
         </div>
     </div>
-    <div class="row image" id="5">
-        <div class="col-md-3" id="50COL">
-        </div>
-        <div class="col-md-3" id="51COL">
-        </div>
-        <div class="col-md-3" id="52COL">
-        </div>
-        <div class="col-md-3" id="53COL">
-        </div>
-    </div>
     <ul class="pagination">
         <li><a href="#">&laquo;</a></li>
         <li><a href="#">1</a></li>
@@ -180,14 +164,21 @@
 </html>
 <script>
     $(document).ready(function() {
+        var href = location.href;
+        var index = href.indexOf("=");
+        var searchContention = href.substr(index+1);
+        searchContention = decodeURI(searchContention);
         //发送ajax请求 使用post方式发送json字符串给后台
         $.ajax({
             type: "post",
-            url: "http://localhost:1993/computerScience",
+            url: "http://localhost:1993/search",
             dataType: "json",
-            data: {type:"image"},
+            data: {message:searchContention},
             success: function (data) {
-                    //接受返回的数据，前端判断采取的动作
+                if(data.length===0){
+                    document.getElementById("showNotFound").innerHTML = "对不起，你搜索的图书暂时没有人上传，请查看其它图书。"
+                }
+                //接受返回的数据，前端判断采取的动作
                 var i = 0;
                 while(i<data.length){
                     var rowi;

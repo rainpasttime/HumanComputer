@@ -138,11 +138,11 @@ app.post('/computerScience', function (req, res) {
     console.log("typeGet   "+typeGet);
     console.log(typeof typeGet);
     //处理跨域的问题
-    res.setHeader('Content-type','application/json;charset=utf-8')
+    res.setHeader('Content-type','application/json;charset=utf-8');
     res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
     res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    res.header("X-Powered-By",' 3.2.1')
+    res.header("X-Powered-By",' 3.2.1');
 
     var imagesearch = {type: typeGet};
     ImageSchema.find(imagesearch, function(err, obj)
@@ -154,13 +154,9 @@ app.post('/computerScience', function (req, res) {
         {
             if(obj.length>=1)
             {
-                //var i = 0;
-                //while(i<obj.length){
-                    console.log("obj");
-                    console.log(obj);
-                    res.send(obj);
-                //}
-
+                console.log("obj");
+                console.log(obj);
+                res.send(obj);
             }
             else
             {
@@ -170,6 +166,41 @@ app.post('/computerScience', function (req, res) {
         }
     })
 });
+
+/* 搜索功能*/
+app.post('/search', function (req, res) {
+    var messageGet= req.body.message;
+    //处理跨域的问题
+    res.setHeader('Content-type','application/json;charset=utf-8')
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Content-Type,Content-Length, Authorization, Accept,X-Requested-With");
+    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
+    res.header("X-Powered-By",' 3.2.1')
+
+    var imagesearch = {message: messageGet};
+    ImageSchema.find(imagesearch, function(err, obj)
+    {
+        if (err) {
+            console.log("Error:" + err);
+        }
+        else
+        {
+            if(obj.length>=1)
+            {
+                console.log("obj");
+                console.log(obj);
+                res.send(obj);
+            }
+            else
+            {
+                console.log("Wrong not find!");
+                res.send(obj);
+            }
+        }
+    })
+});
+
+
 
 var server = app.listen(1993,function(){
     console.log('server connect');
