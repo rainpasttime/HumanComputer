@@ -4,22 +4,20 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta charset="UTF-8">
-    <title>ComputerScience</title>
+    <title>academy</title>
+
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- 引用了JQuery  -->
-    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!--  引用的JQury的validate插件  -->
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
-    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/localization/messages_zh.js"></script>
-    <!-- ==== -->
+    <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--=================上面是引用的文件============================================================-->
 
-    <!--JavaScript-->
+    <!--=================JavaScript=======================================================-->
     <script src="../JS/UploadImage.js"></script>
-    <!--==================-->
+    <!--===========================================================================================-->
 
     <style>
         a
@@ -70,7 +68,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="computerScience.html">计算机学院</a>
+                        <li><a href="academy.html?type=computer">计算机学院</a>
                         </li>
                     </ul>
                 </li>
@@ -80,10 +78,9 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">文学院</a></li>
-                        <li><a href="#">马克思学院</a></li>
-                        <li><a href="#">法学院</a></li>
-                        <li><a href="#">社会学院</a></li>
+                        <li><a href="academy.html?type=liberal">文学院</a></li>
+                        <li><a href="academy.html?type=marx">马克思学院</a></li>
+                        <li><a href="academy.html?type=law">法学院</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -92,10 +89,10 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">化学学院</a></li>
-                        <li><a href="#">数学学院</a></li>
-                        <li><a href="#">经济与工商管理学院</a></li>
-                        <li><a href="#">教育信息技术学院</a></li>
+                        <li><a href="academy.html?type=chemistry">化学学院</a></li>
+                        <li><a href="academy.html?type=math">数学学院</a></li>
+                        <li><a href="academy.html?type=economist">经济与工商管理学院</a></li>
+                        <li><a href="academy.html?type=educate">教育信息技术学院</a></li>
                     </ul>
                 </li>
             </ul>
@@ -116,6 +113,8 @@
 </nav>
 <!--===== 内容页 ========-->
 <div class="container-fluid" id="loadPicture">
+    <div class="row image" id="showNotFound">
+    </div>
     <div class="row image" id="1">
         <div class="col-md-3" id="10COL">
         </div>
@@ -180,14 +179,20 @@
 </html>
 <script>
     $(document).ready(function() {
+        var href = location.href;
+        var index = href.indexOf("=");
+        var searchContention = href.substr(index+1);
         //发送ajax请求 使用post方式发送json字符串给后台
         $.ajax({
             type: "post",
-            url: "http://localhost:1993/computerScience",
+            url: "http://localhost:1993/academy",
             dataType: "json",
-            data: {type:"computer"},
+            data: {type:searchContention},
             success: function (data) {
-                    //接受返回的数据，前端判断采取的动作
+                if(data.length===0){
+                    document.getElementById("showNotFound").innerHTML = "对不起，你搜索的图书暂时没有人上传，请查看其它图书。"
+                }
+                //接受返回的数据，前端判断采取的动作
                 var i = 0;
                 while(i<data.length){
                     var rowi;
@@ -227,8 +232,7 @@
                     }
                     else if(i+1<length){
                         rowi = (Math.floor(i/4)+1).toString();
-                        for(t = i;t<i+2;t++)
-                        {
+                        for(t = i;t<i+2;t++) {
                             pathOne = data[t].imagePath;
                             j = t%4;
                             id = rowi+j.toString()+"COL";

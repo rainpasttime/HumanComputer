@@ -132,8 +132,8 @@ app.post('/login', function (req, res,next) {
     })
 });
 
-/* 图片加载*/
-app.post('/computerScience', function (req, res) {
+/* 具体学科*/
+app.post('/academy', function (req, res) {
     var typeGet= req.body.type;
     console.log("typeGet   "+typeGet);
     console.log(typeof typeGet);
@@ -161,7 +161,7 @@ app.post('/computerScience', function (req, res) {
             else
             {
                 console.log("Wrong not find!");
-                res.send({status:'success',message:false});
+                res.send(obj);
             }
         }
     })

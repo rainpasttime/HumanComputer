@@ -62,7 +62,7 @@
                         <span class="caret"></span>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="computerScience.html">计算机学院</a>
+                        <li><a href="academy.html?type=computer">计算机学院</a>
                         </li>
                     </ul>
                 </li>
@@ -72,10 +72,9 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">文学院</a></li>
-                        <li><a href="#">马克思学院</a></li>
-                        <li><a href="#">法学院</a></li>
-                        <li><a href="#">社会学院</a></li>
+                        <li><a href="academy.html?type=liberal">文学院</a></li>
+                        <li><a href="academy.html?type=marx">马克思学院</a></li>
+                        <li><a href="academy.html?type=law">法学院</a></li>
                     </ul>
                 </li>
                 <li class="dropdown">
@@ -84,10 +83,10 @@
                         <b class="caret"></b>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">化学学院</a></li>
-                        <li><a href="#">数学学院</a></li>
-                        <li><a href="#">经济与工商管理学院</a></li>
-                        <li><a href="#">教育信息技术学院</a></li>
+                        <li><a href="academy.html?type=chemistry">化学学院</a></li>
+                        <li><a href="academy.html?type=math">数学学院</a></li>
+                        <li><a href="academy.html?type=economist">经济与工商管理学院</a></li>
+                        <li><a href="academy.html?type=educate">教育信息技术学院</a></li>
                     </ul>
                 </li>
             </ul>
@@ -218,8 +217,7 @@
                     }
                     else if(i+1<length){
                         rowi = (Math.floor(i/4)+1).toString();
-                        for(t = i;t<i+2;t++)
-                        {
+                        for(t = i;t<i+2;t++) {
                             pathOne = data[t].imagePath;
                             j = t%4;
                             id = rowi+j.toString()+"COL";
