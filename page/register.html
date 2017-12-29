@@ -12,10 +12,10 @@
     <link rel="stylesheet" href="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="http://cdn.static.runoob.com/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="http://cdn.static.runoob.com/libs/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.min.js"></script>
     <!--=================上面是引用的文件============================================================-->
 
     <!--=================JavaScript=======================================================-->
-    <script src="../JS/UploadImage.js"></script>
     <!--===========================================================================================-->
 
     <style>
@@ -104,9 +104,7 @@
         <div>
             <form class="navbar-form navbar-left" role="search">
                 <input type="text" class="form-control" placeholder="Search" id="searchContention">
-                <button type="button" class="btn btn-default btn-sm" id="searchButton">
-                    <span class="glyphicon glyphicon-search"></span> Search
-                </button>
+                <input type="button" class="btn btn-default btn-md" id="searchButton" value="Search">
             </form>
         </div>
     </div>
@@ -131,7 +129,17 @@
                 <br/>
                 <br/>
                 <label for="major">*学院&nbsp</label>
-                <input class="text" type="text" placeholder="请输入学院" id="major" name="major">
+                <!--input class="text" type="text" placeholder="请输入学院" id="major" name="major"-->
+                <select id="major">
+                    <option>Computer</option>
+                    <option>liberal</option>
+                    <option>marx</option>
+                    <option>law</option>
+                    <option>chemistry</option>
+                    <option>math</option>
+                    <option>economist</option>
+                    <option>educate</option>
+                </select>
                 <br/>
                 <div class="row">
                     <div class="col-md-2">
@@ -189,7 +197,7 @@
                         required: "请输入学院"
                     }
                 },
-            //当验证通过之后需要把表单中的信息存放进数据库里面
+                //当验证通过之后需要把表单中的信息存放进数据库里面
                 submitHandler:function () {
                     var usernameGet = $('#username').val();
                     var passwordGet = $('#password').val();
